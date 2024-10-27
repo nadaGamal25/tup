@@ -7,6 +7,7 @@ export default function ForgetPassword() {
     const [errorList, seterrorList]= useState([]); 
     const [theUser,setUser] =useState({
       email:'',
+      gotex:false,
     })
     const [error , setError]= useState('')
     const [isLoading, setisLoading] =useState(false)
@@ -55,6 +56,8 @@ export default function ForgetPassword() {
     function validateForm(){
       let scheme= Joi.object({
         email:Joi.string().email({ tlds: { allow: ['com', 'net','lol','pro'] }}).required(),
+        gotex:Joi.boolean().allow(null, ''),
+
   
       });
       return scheme.validate(theUser, {abortEarly:false});

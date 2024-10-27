@@ -25,6 +25,7 @@ export default function RegisterForm() {
     address: "",
     location: "",
     cr:"",
+    gotex:false,
   })
   async function sendRegisterDataToApi() {
     const formData = new FormData();
@@ -128,6 +129,7 @@ function submitRegisterForm(e){
         address:Joi.string().required(),
         location:Joi.string().required(),
         cr:Joi.allow(null, ''),
+        gotex:Joi.boolean().allow(null, ''),
     });
 
     return scheme.validate(theUser, {abortEarly:false});
